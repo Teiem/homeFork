@@ -50,7 +50,7 @@ h1 {
     cursor: pointer;
 }
 
-.tree > ul {
+.tree>ul {
     margin: 0;
     padding-left: 1rem;
 }
@@ -64,11 +64,12 @@ li {
     position: relative;
 }
 
-li.hideChildren > ul {
+li.hideChildren>ul {
     display: none;
 }
 
-li::before, li::after {
+li::before,
+li::after {
     content: "";
     position: absolute;
     left: -0.75rem;
@@ -120,5 +121,5 @@ form h1 {
     width: 50vw;
     height: 50vh;
     word-break: break-all;
-    resize:none;
+    resize: none;
 }
