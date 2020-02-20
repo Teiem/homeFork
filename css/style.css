@@ -15,6 +15,7 @@
 
 html {
     font-size: 18px;
+    overflow: hidden;
 }
 
 body {
@@ -46,6 +47,7 @@ h1 {
     font-size: 1rem;
     font-weight: normal;
     color: var(--red);
+    cursor: pointer;
 }
 
 .tree > ul {
@@ -60,6 +62,10 @@ ul {
 
 li {
     position: relative;
+}
+
+li.hideChildren > ul {
+    display: none;
 }
 
 li::before, li::after {
@@ -102,11 +108,17 @@ form h1 {
     padding-left: 0.125rem;
 }
 
-input {
+/* you can fill the texarea above/below? the Viewport */
+#search {
     font-family: var(--font);
     font-size: 1rem;
     color: var(--foreground);
     background-color: var(--background);
     border: none;
     outline: none;
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    word-break: break-all;
+    resize:none;
 }
