@@ -1,5 +1,6 @@
 const Config = {
     name: "user",
+    scale: 1,
     Links: [
         [
             "site",
@@ -39,11 +40,12 @@ const Main = (() => {
     const list = document.getElementById("list");
     const names = document.querySelectorAll("[data-Name]");
     const search = document.getElementById("search");
+    const form = document.forms[0];
 
     const init = () => {
         list.innerHTML = Config.Links.map(([gName, Links]) => `
             <li>
-                <h1>${gName}<h1>
+                <h1 onclick="this.parentNode.classList.toggle('hideChildren')">${gName}</h1>
                 <ul>
                     ${Links.map(([lName, url]) => `
                         <li>
@@ -58,7 +60,8 @@ const Main = (() => {
             el.innerText = Config.name;
         });
 
-        document.addEventListener("keydown", e => e.key.length === 1 && search.focus())
+        document.addEventListener("keydown", e => e.key.length === 1 && search.focus());
+        search.addEventListener("keydown", () => (window.event ? event.keyCode : e.which) == 13 && form.submit());
     };
 
     return {
