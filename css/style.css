@@ -46,7 +46,8 @@ span {
 }
 
 h1 {
-    display: inline;
+    display: inline-block;
+    margin: 0;
     font-family: var(--font);
     font-size: 1rem;
     font-weight: normal;
@@ -57,7 +58,7 @@ h1 {
 
 .tree>ul {
     margin: 0;
-    padding-left: 1rem;
+    padding-left: 1.25rem;
 }
 
 ul {
@@ -76,20 +77,20 @@ li.hideChildren > .ulWrap {
 .ulWrap {
     max-height: calc(var(--linkCount) * 1em * 4/3);
     overflow: hidden;
-    transition: 0.15s all ease-in-out;
+    transition: 0.15s max-height ease-in-out;
 }
 
 li::before,
 li::after {
     content: "";
     position: absolute;
-    left: -0.75rem;
+    left: -1rem;
 }
 
 li::before {
     border-top: var(--branch);
     top: 0.75rem;
-    width: 0.5rem;
+    width: 0.75rem;
 }
 
 li::after {
@@ -134,3 +135,27 @@ form h1 {
     word-break: break-all;
     resize: none;
 }
+
+li::before {
+    transition: 0.1s width ease-in-out;
+}
+
+li > h1 {
+    transition: 0.1s transform ease-in-out;
+}
+
+li.hideChildren::before {
+    width: 0.25rem;
+}
+
+li.hideChildren > h1 {
+    transform: translateX(-0.5rem);
+}
+
+/* li:hover::before {
+    width: 1rem;
+}
+
+li:hover > h1 {
+    transform: translateX(0.25rem);
+} */
