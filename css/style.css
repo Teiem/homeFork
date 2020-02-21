@@ -28,6 +28,10 @@ body {
     align-items: center;
 }
 
+main {
+    min-height: calc((var(--categorys) + var(--totalLinks)) * 4em/3 + 16em/3 + 1.8125em);
+}
+
 .prompt {
     font-family: var(--font);
     color: var(--foreground);
@@ -48,6 +52,7 @@ h1 {
     font-weight: normal;
     color: var(--red);
     cursor: pointer;
+    user-select: none;
 }
 
 .tree>ul {
@@ -64,8 +69,14 @@ li {
     position: relative;
 }
 
-li.hideChildren>ul {
-    display: none;
+li.hideChildren > .ulWrap {
+    max-height: 0;
+}
+
+.ulWrap {
+    max-height: calc(var(--linkCount) * 1em * 4/3);
+    overflow: hidden;
+    transition: 0.15s all ease-in-out;
 }
 
 li::before,
