@@ -14,7 +14,7 @@
 }
 
 html {
-    font-size: 18px;
+    /* font-size: 18px; */
     overflow: hidden;
 }
 
@@ -29,7 +29,8 @@ body {
 }
 
 main {
-    min-height: calc((var(--categorys) + var(--totalLinks)) * 4em/3 + 16em/3 + 1.8125em);
+    min-height: calc(var(--listHeight) + 7.0125rem);
+    /* -24 */
 }
 
 .prompt {
@@ -66,16 +67,23 @@ ul {
     padding-left: 2.5rem;
 }
 
+/* move elements when collapsing/expanding */
+ul {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
 li {
     position: relative;
 }
 
-li.hideChildren > .ulWrap {
+.hideChildren > ul {
     max-height: 0;
 }
 
-.ulWrap {
-    max-height: calc(var(--linkCount) * 1em * 4/3);
+ul {
+    max-height: var(--height);
     overflow: hidden;
     transition: 0.15s max-height ease-in-out;
 }
