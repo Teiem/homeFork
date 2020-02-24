@@ -14,14 +14,19 @@
 }
 
 html {
-    /* font-size: 18px; */
-    overflow: hidden;
+    overflow-x: hidden;
+    scrollbar-width: none
+}
+
+html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 body {
     background: var(--background);
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -29,7 +34,10 @@ body {
 }
 
 main {
-    min-height: calc(var(--listHeight) + 7.0125rem);
+    margin: 5vh 0;
+    /* min-height: calc(var(--listHeight) + 7.0125rem); */
+    min-height: var(--listHeight);
+
     /* -24 */
 }
 
@@ -65,27 +73,22 @@ h1 {
 ul {
     list-style: none;
     padding-left: 2.5rem;
-}
 
-/* move elements when collapsing/expanding */
-ul {
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
+
+    max-height: var(--height);
+    overflow: hidden;
+    transition: 0.125s max-height ease-out;
 }
 
 li {
     position: relative;
 }
 
-.hideChildren > ul {
+li.hideChildren > ul {
     max-height: 0;
-}
-
-ul {
-    max-height: var(--height);
-    overflow: hidden;
-    transition: 0.15s max-height ease-in-out;
 }
 
 li::before,
@@ -139,17 +142,17 @@ form h1 {
     outline: none;
     position: absolute;
     width: 50vw;
-    height: 50vh;
+    /* height: 50vh; */
     word-break: break-all;
     resize: none;
 }
 
 li::before {
-    transition: 0.1s width ease-in-out;
+    transition: 0.125s width ease-out;
 }
 
 li > h1 {
-    transition: 0.1s transform ease-in-out;
+    transition: 0.125s transform ease-out;
 }
 
 li.hideChildren::before {
@@ -167,3 +170,8 @@ li.hideChildren > h1 {
 li:hover > h1 {
     transform: translateX(0.25rem);
 } */
+
+/* Uitll */
+.noTransition * {
+    transition: none !important;
+}
